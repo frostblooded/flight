@@ -18,8 +18,7 @@ public class Player : MonoBehaviour
         // Make bird jump up if any key is pressed
         if (Input.anyKey)
         {
-            Vector3 movementVector = new Vector3(0, JUMP_FORCE, 0);
-            rb2D.AddForce(movementVector);
+            rb2D.AddForce(Vector2.up * JUMP_FORCE, ForceMode2D.Impulse);
         }
     }
 }
