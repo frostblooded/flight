@@ -12,6 +12,14 @@ public class Player : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Tree"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
