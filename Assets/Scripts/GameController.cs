@@ -9,10 +9,10 @@ public class GameController : MonoBehaviour {
 
     public GameObject treePrefab;
 
-    private float TREE_CREATION_X = 20;
-    private float TOP_TREE_MIN_Y = 3.0f;
-    private float TOP_TREE_MAX_Y = 7.0f;
-    private float DISTANCE_BETWEEN_TREES_Y = 10.0f;
+    public float TREE_CREATION_X = 20;
+    public float TOP_TREE_MIN_Y = 3.0f;
+    public float TOP_TREE_MAX_Y = 7.0f;
+    public float DISTANCE_BETWEEN_TREES_Y = 10.0f;
 
     private DateTime lastTreesCreatedAt = DateTime.Now;
 
@@ -46,8 +46,23 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    void DestroyTrees()
+    {
+        // Destroy trees that went off the screen to the left
+        GameObject[] trees = GameObject.FindGameObjectsWithTag("Tree");
+
+        foreach (GameObject tree in trees)
+        {
+            if(tree.transform.position.x < -20)
+            {
+                Destroy(tree.gameObject);
+            }
+        }
+    }
+
 	void Update () {
         CreateTrees();
+        DestroyTrees();
         MoveTrees();
 	}
 }
