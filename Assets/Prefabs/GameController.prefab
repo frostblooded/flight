@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4489127136411638}
-  - component: {fileID: 114699082443239976}
+  - component: {fileID: 114396578768538348}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114699082443239976
+--- !u!114 &114396578768538348
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,10 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419d51d968b9f7f428606192bf4273d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SECONDS_BETWEEN_TREES: 1
-  TREES_SPEED: 0.2
+  SecondsBetweenTrees: 1
+  TreesSpeed: 0.2
   treePrefab: {fileID: 1984096058437214, guid: 139e7108a86824648babded0eab4c564, type: 2}
-  TREE_CREATION_X: 20
-  TOP_TREE_MIN_Y: 3
-  TOP_TREE_MAX_Y: 7
-  DISTANCE_BETWEEN_TREES_Y: 11
+  TreeCreationX: 20
+  TopTreeMinY: 3
+  TopTreeMaxY: 7
+  DistanceBetweenTreesY: 10
+  DestroyTreesLeftOfX: -20

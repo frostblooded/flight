@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
-    public float SECONDS_BETWEEN_TREES = 1;
-    public float TREES_SPEED = 0.2f;
+    public float SecondsBetweenTrees = 1;
+    public float TreesSpeed = 0.2f;
 
     public GameObject treePrefab;
 
-    public float TREE_CREATION_X = 20;
-    public float TOP_TREE_MIN_Y = 3.0f;
-    public float TOP_TREE_MAX_Y = 7.0f;
-    public float DISTANCE_BETWEEN_TREES_Y = 10.0f;
+    public float TreeCreationX = 20;
+    public float TopTreeMinY = 3.0f;
+    public float TopTreeMaxY = 7.0f;
+    public float DistanceBetweenTreesY = 10.0f;
+    public float DestroyTreesLeftOfX = -20.0f;
 
     private DateTime lastTreesCreatedAt = DateTime.Now;
 
@@ -20,13 +21,13 @@ public class GameController : MonoBehaviour {
     {
         // If enought seconds have passed since the last tree was created,
         // create a new tree now
-        if(lastTreesCreatedAt.AddSeconds(SECONDS_BETWEEN_TREES) < DateTime.Now)
+        if(lastTreesCreatedAt.AddSeconds(SecondsBetweenTrees) < DateTime.Now)
         {
-            float topTreeY = UnityEngine.Random.Range(TOP_TREE_MIN_Y, TOP_TREE_MAX_Y);
-            float bottomTreeY = topTreeY - DISTANCE_BETWEEN_TREES_Y;
+            float topTreeY = UnityEngine.Random.Range(TopTreeMinY, TopTreeMinY);
+            float bottomTreeY = topTreeY - DistanceBetweenTreesY;
 
-            Vector3 topTreePosition = new Vector3(TREE_CREATION_X, topTreeY);
-            Vector3 bottomTreePosition = new Vector3(TREE_CREATION_X, bottomTreeY);
+            Vector3 topTreePosition = new Vector3(TreeCreationX, topTreeY);
+            Vector3 bottomTreePosition = new Vector3(TreeCreationX, bottomTreeY);
 
             Instantiate(treePrefab, topTreePosition, Quaternion.identity);
             Instantiate(treePrefab, bottomTreePosition, Quaternion.identity);
@@ -42,10 +43,10 @@ public class GameController : MonoBehaviour {
 
         foreach(GameObject tree in trees)
         {
-            tree.transform.position -= Vector3.right * TREES_SPEED;
+            tree.transform.position -= Vector3.right * TreesSpeed;
 
             // Destroy tree if it went off the screen
-            if (tree.transform.position.x < -20)
+            if (tree.transform.position.x < DestroyTreesLeftOfX)
             {
                 Destroy(tree.gameObject);
             }
