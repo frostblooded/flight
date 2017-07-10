@@ -43,17 +43,9 @@ public class GameController : MonoBehaviour {
         foreach(GameObject tree in trees)
         {
             tree.transform.position -= Vector3.right * TREES_SPEED;
-        }
-    }
 
-    void DestroyTrees()
-    {
-        // Destroy trees that went off the screen to the left
-        GameObject[] trees = GameObject.FindGameObjectsWithTag("Tree");
-
-        foreach (GameObject tree in trees)
-        {
-            if(tree.transform.position.x < -20)
+            // Destroy tree if it went off the screen
+            if (tree.transform.position.x < -20)
             {
                 Destroy(tree.gameObject);
             }
@@ -62,7 +54,6 @@ public class GameController : MonoBehaviour {
 
 	void Update () {
         CreateTrees();
-        DestroyTrees();
         MoveTrees();
 	}
 }
