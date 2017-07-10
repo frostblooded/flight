@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb2D;
-    public int JUMP_FORCE = 10;
+    public float JUMP_FORCE = 10;
     
     void Start()
     {
@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collide");
+
         if(collision.gameObject.CompareTag("Tree"))
         {
             Destroy(this.gameObject);
