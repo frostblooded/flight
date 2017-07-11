@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
     public float DestroyTreesLeftOfX = -20.0f;
 
     private DateTime lastTreesCreatedAt = DateTime.Now;
+    private Transform treeHolder;
 
     void CreateTrees()
     {
@@ -29,8 +30,8 @@ public class GameController : MonoBehaviour {
             Vector3 topTreePosition = new Vector3(TreeCreationX, topTreeY);
             Vector3 bottomTreePosition = new Vector3(TreeCreationX, bottomTreeY);
 
-            Instantiate(treePrefab, topTreePosition, Quaternion.identity);
-            Instantiate(treePrefab, bottomTreePosition, Quaternion.identity);
+            Instantiate(treePrefab, topTreePosition, Quaternion.identity, treeHolder);
+            Instantiate(treePrefab, bottomTreePosition, Quaternion.identity, treeHolder);
 
             lastTreesCreatedAt = DateTime.Now;
         }
@@ -53,7 +54,12 @@ public class GameController : MonoBehaviour {
         }
     }
 
-	void Update () {
+    private void Start()
+    {
+        treeHolder = new GameObject("Trees").transform;
+    }
+
+    void Update () {
         CreateTrees();
         MoveTrees();
 	}
