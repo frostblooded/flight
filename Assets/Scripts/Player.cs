@@ -1,19 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb2D;
     private bool buttonPressed = false;
+    private Text scoreText;
 
     public float JumpForce = 15;
     public int score = 0;
-
-    void Start()
-    {
-        rb2D = GetComponent<Rigidbody2D>();
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -24,8 +21,6 @@ public class Player : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        Debug.Log("Collided with " + collision.gameObject.tag);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,9 +30,20 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("TreeTrigger"))
         {
             score++;
+            UpdateScoreText();
         }
+    }
 
-        Debug.Log("Entered trigger with tag " + collision.gameObject.tag);
+    private void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + score;
+    }
+
+    void Start()
+    {
+        rb2D = GetComponent<Rigidbody2D>();
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        UpdateScoreText();
     }
 
     private void Update()
