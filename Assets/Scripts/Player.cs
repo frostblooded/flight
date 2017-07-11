@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         // Sometimes the score updates at the same time (or after)
         // the game ends, so this if prevents it
-        if (!gameController.gameHasEnded)
+        if (gameController.gameHasEnded)
             return;
 
         // Whenever the player collides with the trigger between
