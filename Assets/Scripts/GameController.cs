@@ -18,21 +18,27 @@ public class GameController : MonoBehaviour {
     private DateTime lastTreesCreatedAt = DateTime.Now;
     private Transform treeHolder;
 
+    void CreateTreeAt(float x)
+    {
+        // Get a random position for the top tree and spawn
+        // the rest of the tree parts based on that
+        float topTreeY = UnityEngine.Random.Range(TopTreeMinY, TopTreeMaxY);
+        float bottomTreeY = topTreeY - DistanceBetweenTreesY;
+
+        Vector3 topTreePosition = new Vector3(x, topTreeY);
+        Vector3 bottomTreePosition = new Vector3(x, bottomTreeY);
+
+        Instantiate(treePrefab, topTreePosition, Quaternion.identity, treeHolder);
+        Instantiate(treePrefab, bottomTreePosition, Quaternion.identity, treeHolder);
+    }
+
     void CreateTrees()
     {
         // If enought seconds have passed since the last tree was created,
         // create a new tree now
         if(lastTreesCreatedAt.AddSeconds(SecondsBetweenTrees) < DateTime.Now)
         {
-            float topTreeY = UnityEngine.Random.Range(TopTreeMinY, TopTreeMaxY);
-            float bottomTreeY = topTreeY - DistanceBetweenTreesY;
-
-            Vector3 topTreePosition = new Vector3(TreeCreationX, topTreeY);
-            Vector3 bottomTreePosition = new Vector3(TreeCreationX, bottomTreeY);
-
-            Instantiate(treePrefab, topTreePosition, Quaternion.identity, treeHolder);
-            Instantiate(treePrefab, bottomTreePosition, Quaternion.identity, treeHolder);
-
+            CreateTreeAt(TreeCreationX);
             lastTreesCreatedAt = DateTime.Now;
         }
     }
