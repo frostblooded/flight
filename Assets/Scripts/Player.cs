@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         // is a tree
         if (collision.gameObject.CompareTag("Tree"))
         {
-            gameController.displayedText.text = "Your score is: " + score + "\nPress any key to restart.";
+            gameController.displayedText.text = "Your score is: " + score + "\nPress to restart.";
             gameController.gameHasEnded = true;
             Destroy(this.gameObject);
         }
@@ -27,12 +27,17 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Sometimes the score updates at the same time (or after)
+        // the game ends, so this if prevents it
+        if (!gameController.gameHasEnded)
+            return;
+
         // Whenever the player collides with the trigger between
         // the tree's components, increase the score
         if(collision.gameObject.CompareTag("TreeTrigger"))
         {
             score++;
-            gameController.displayedText.text = "Score: " + score;
+            gameController.displayedText.text = score.ToString();
         }
     }
 
