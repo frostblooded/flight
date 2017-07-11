@@ -58,3 +58,5 @@ MonoBehaviour:
   DestroyTreesLeftOfX: -20
   treeComponentPrefab: {fileID: 1984096058437214, guid: 139e7108a86824648babded0eab4c564,
     type: 2}
+  triggerComponentPrefab: {fileID: 1096646912961854, guid: e00863d0329344c4e98964ddd27b85f6,
+    type: 2}

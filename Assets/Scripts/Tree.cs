@@ -13,6 +13,7 @@ public class Tree : MonoBehaviour
     public float DestroyTreesLeftOfX = -20.0f;
 
     public GameObject treeComponentPrefab;
+    public GameObject triggerComponentPrefab;
 
     public void Move()
     {
@@ -27,9 +28,10 @@ public class Tree : MonoBehaviour
 
     private void Start()
     {
-        Vector3 treeComponentSize = treeComponentPrefab.GetComponent<Renderer>().bounds.size;
+        Bounds treeComponentBounds = treeComponentPrefab.GetComponent<Renderer>().bounds;
+        Vector3 treeComponentSize = treeComponentBounds.size;
 
-        float topTreeY = Random.Range(TopComponentMinY, TopComponentMaxY);
+        float topComponentY = Random.Range(TopComponentMinY, TopComponentMaxY);
 
         // To get what the Y of the bottom component should be, we first substract
         // the distance that we need between the components, but we also need to substract
@@ -37,15 +39,22 @@ public class Tree : MonoBehaviour
         // of the top component is actually its center. Then we substract half of the 
         // component's height again because the case is the same when it comes to
         // the bottom component. Ultimately we just substract the component's height once.
-        float bottomTreeY = topTreeY - DistanceBetweenComponentsY - treeComponentSize.y;
+        float bottomComponentY = topComponentY - DistanceBetweenComponentsY - treeComponentSize.y;
+
+        // Spawn the trigger component exactly in the middle between the other two components
+        // TODO: Set the height of the trigger component to be set to the constant that says
+        //   what the distance between the top and bottom components is
+        float triggerComponentY = (topComponentY + bottomComponentY) / 2.0f;
         
-        GameObject topTreeComponent = Instantiate(treeComponentPrefab, this.transform);
-        GameObject bottomTreeComponent = Instantiate(treeComponentPrefab, this.transform);
+        GameObject topComponent = Instantiate(treeComponentPrefab, this.transform);
+        GameObject bottomComponent = Instantiate(treeComponentPrefab, this.transform);
+        GameObject triggerComponent = Instantiate(triggerComponentPrefab, this.transform);
 
         // Move the x of the components' relative position to zero, so
         // that they appear at the same x as their parent
-        topTreeComponent.transform.localPosition = new Vector2(0, topTreeY);
-        bottomTreeComponent.transform.localPosition = new Vector2(0, bottomTreeY);
+        topComponent.transform.localPosition = new Vector2(0, topComponentY);
+        bottomComponent.transform.localPosition = new Vector2(0, bottomComponentY);
+        triggerComponent.transform.localPosition = new Vector2(0, triggerComponentY);
     }
 
     private void FixedUpdate()

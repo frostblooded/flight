@@ -5,9 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb2D;
-    private bool buttonPressed;
+    private bool buttonPressed = false;
 
     public float JumpForce = 15;
+    public int score = 0;
 
     void Start()
     {
@@ -23,6 +24,20 @@ public class Player : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        Debug.Log("Collided with " + collision.gameObject.tag);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Whenever the player collides with the trigger between
+        // the tree's components, increase the score
+        if(collision.gameObject.CompareTag("TreeTrigger"))
+        {
+            score++;
+        }
+
+        Debug.Log("Entered trigger with tag " + collision.gameObject.tag);
     }
 
     private void Update()
