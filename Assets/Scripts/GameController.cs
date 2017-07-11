@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
     void Update () {
         CreateTree();
 
-        if(gameHasEnded && Input.anyKey)
+        if(gameHasEnded && Input.anyKeyDown)
         {
             // Reload the current scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
