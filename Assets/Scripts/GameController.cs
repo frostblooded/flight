@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
         // create a new tree now
         if(lastTreesCreatedAt.AddSeconds(SecondsBetweenTrees) < DateTime.Now)
         {
-            float topTreeY = UnityEngine.Random.Range(TopTreeMinY, TopTreeMinY);
+            float topTreeY = UnityEngine.Random.Range(TopTreeMinY, TopTreeMaxY);
             float bottomTreeY = topTreeY - DistanceBetweenTreesY;
 
             Vector3 topTreePosition = new Vector3(TreeCreationX, topTreeY);

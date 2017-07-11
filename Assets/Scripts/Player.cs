@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb2D;
     private bool buttonPressed;
 
-    public float JumpForce = 10;
+    public float JumpForce = 15;
 
     void Start()
     {
