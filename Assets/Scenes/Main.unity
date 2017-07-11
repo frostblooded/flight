@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 242473570}
   - component: {fileID: 242473569}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: Displayed Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -176,8 +176,8 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Score: 0'
 --- !u!222 &242473570
@@ -225,9 +225,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114725974432681878, guid: 813e1d6493f31f6488e72dd5288f919c,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 507585463}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 813e1d6493f31f6488e72dd5288f919c, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &507585463 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114396578768538348, guid: 76864f078ccf98f4b9e7ecfa0d8c7b33,
+    type: 2}
+  m_PrefabInternal: {fileID: 536407710}
+  m_Script: {fileID: 11500000, guid: 419d51d968b9f7f428606192bf4273d2, type: 3}
 --- !u!1001 &536407710
 Prefab:
   m_ObjectHideFlags: 0

@@ -2,11 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public float SecondsBetweenTrees = 1;
     public GameObject treePrefab;
+    public Text displayedText;
+    public bool gameHasEnded = false;
 
     private DateTime lastTreesCreatedAt = DateTime.Now;
     private Transform treeHolder;
@@ -27,9 +31,16 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         treeHolder = new GameObject("Trees").transform;
+        displayedText = GameObject.Find("Displayed Text").GetComponent<Text>();
     }
 
     void Update () {
         CreateTree();
+
+        if(gameHasEnded && Input.anyKey)
+        {
+            // Reload the current scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 	}
 }

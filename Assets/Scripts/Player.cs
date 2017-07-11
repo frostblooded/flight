@@ -7,10 +7,10 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb2D;
     private bool buttonPressed = false;
-    private Text scoreText;
 
     public float JumpForce = 15;
     public int score = 0;
+    public GameController gameController;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
         // is a tree
         if (collision.gameObject.CompareTag("Tree"))
         {
+            gameController.displayedText.text = "Your score is: " + score + "\nPress any key to restart.";
+            gameController.gameHasEnded = true;
             Destroy(this.gameObject);
         }
     }
@@ -30,20 +32,13 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("TreeTrigger"))
         {
             score++;
-            UpdateScoreText();
+            gameController.displayedText.text = "Score: " + score;
         }
-    }
-
-    private void UpdateScoreText()
-    {
-        scoreText.text = "Score: " + score;
     }
 
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
-        UpdateScoreText();
     }
 
     private void Update()
