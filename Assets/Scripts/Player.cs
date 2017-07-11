@@ -44,7 +44,13 @@ public class Player : MonoBehaviour
         // Make bird jump up if any key is pressed
         if (buttonPressed)
         {
-            rb2D.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+            // Set the upward velocity, so that the player always
+            // jumps up with the same speed, no matter his previous
+            // position. If we were to use the AddForce method, it would only
+            // slow the falling speed if the player was falling.
+            // When it is done with setting the velocity directly, 
+            // it gets the same upward velocity every time.
+            rb2D.velocity = Vector2.up * JumpForce;
             buttonPressed = false;
         }
     }
