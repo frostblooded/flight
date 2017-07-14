@@ -22,7 +22,7 @@ public class Tree : MonoBehaviour
         // Destroy component if it went off the screen
         if (this.transform.position.x < DestroyTreesLeftOfX)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 

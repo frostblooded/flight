@@ -9,7 +9,9 @@ public class GameController : MonoBehaviour
 {
     public float SecondsBetweenTrees = 1;
     public GameObject treePrefab;
+    [HideInInspector]
     public Text displayedText;
+    [HideInInspector]
     public bool gameHasEnded = false;
 
     private DateTime lastTreesCreatedAt = DateTime.Now;
