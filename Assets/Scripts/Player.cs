@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         // Sometimes the score updates at the same time (or after)
         // the game ends, so this if prevents it
