@@ -51,7 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419d51d968b9f7f428606192bf4273d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondsBetweenTrees: 2
+  SecondsBetweenTrees: 1.5
   treePrefab: {fileID: 1722110435198728, guid: f23d7ac09a7455642968781fc456f8ff, type: 2}
-  displayedText: {fileID: 0}
+  gameUI: {fileID: 0}
+  gameText: {fileID: 0}
+  endGameUI: {fileID: 0}
+  endGameText: {fileID: 0}
   gameHasEnded: 0
