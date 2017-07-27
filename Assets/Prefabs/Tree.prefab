@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685ee21666c231244acd684c37e34b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 0.2
+  MoveSpeed: 0.1
   TopComponentMinY: 3
   TopComponentMaxY: 7
   DistanceBetweenComponentsY: 3.5
