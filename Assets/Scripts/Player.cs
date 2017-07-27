@@ -8,29 +8,9 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb2D;
     private bool buttonPressed = false;
 
-    private const string HighscorePrefsName = "highscore";
-
     public float JumpForce = 15;
     public int score = 0;
     public GameController gameController;
-
-    /// <summary>
-    /// Updates the highscore of the player if necessary
-    /// </summary>
-    /// <returns>The high score after it has been updated</returns>
-    private int UpdateHighscore()
-    {
-        int currentHighscore = PlayerPrefs.GetInt(Player.HighscorePrefsName, 0);
-
-        if(score > currentHighscore)
-        {
-            PlayerPrefs.SetInt(Player.HighscorePrefsName, score);
-            PlayerPrefs.Save();
-            return score;
-        }
-
-        return currentHighscore;
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -40,12 +20,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Tree")
             || collision.gameObject.CompareTag("Boundary"))
         {
-            int highscore = UpdateHighscore();
-            gameController.displayedText.text = @"Your score is: " + score +
-                "\nYour highscore is: " + highscore +
-                "\nPress to restart.";
-            gameController.gameHasEnded = true;
-            Destroy(this.gameObject);
+            gameController.EndGame(this);
         }
     }
 
@@ -61,7 +36,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("TreeTrigger"))
         {
             score++;
-            gameController.displayedText.text = score.ToString();
+            gameController.DisplayGameScore(score);
         }
     }
 

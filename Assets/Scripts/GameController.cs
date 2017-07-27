@@ -10,14 +10,22 @@ public class GameController : MonoBehaviour
     public float SecondsBetweenTrees = 1;
     public GameObject treePrefab;
     [HideInInspector]
-    public Text displayedText;
+    public GameObject gameUI;
+    [HideInInspector]
+    public Text gameText;
+    [HideInInspector]
+    public GameObject endGameUI;
+    [HideInInspector]
+    public Text endGameText;
     [HideInInspector]
     public bool gameHasEnded = false;
+
+    private const string HighscorePrefsName = "highscore";
 
     private DateTime? lastTreesCreatedAt;
     private Transform treeHolder;
 
-    void CreateTree()
+    private void CreateTree()
     {
         // If enought seconds have passed since the last tree was created,
         // create a new tree now.
@@ -33,19 +41,63 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the highscore of the player if necessary
+    /// </summary>
+    /// <returns>The high score after it has been updated</returns>
+    private int UpdateHighscore(int score)
+    {
+        int currentHighscore = PlayerPrefs.GetInt(HighscorePrefsName, 0);
+
+        if (score > currentHighscore)
+        {
+            PlayerPrefs.SetInt(HighscorePrefsName, score);
+            PlayerPrefs.Save();
+            return score;
+        }
+
+        return currentHighscore;
+    }
+
+    public void DisplayGameScore(int score)
+    {
+        gameText.text = score.ToString();
+    }
+
+    public void DisplayEndGameText(int score, int highscore)
+    {
+        gameUI.SetActive(false);
+        endGameUI.SetActive(true);
+        endGameText.text = "Your score is: " + score +
+            "\nYour highscore is: " + highscore;
+    }
+
+    public void EndGame(Player player)
+    {
+        int highscore = UpdateHighscore(player.score);
+        DisplayEndGameText(player.score, highscore);
+        gameHasEnded = true;
+        Destroy(player.gameObject);
+    }
+
     private void Start()
     {
         treeHolder = new GameObject("Trees").transform;
-        displayedText = GameObject.Find("Displayed Text").GetComponent<Text>();
+
+        gameUI = GameObject.Find("Game UI");
+        gameText = GameObject.Find("Game text").GetComponent<Text>();
+
+        endGameUI = GameObject.Find("End game UI");
+        endGameText = GameObject.Find("End game text").GetComponent<Text>();
+        endGameUI.SetActive(false);
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void Update () {
         CreateTree();
-
-        if(gameHasEnded && Input.anyKeyDown)
-        {
-            // Reload the current scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
 	}
 }
