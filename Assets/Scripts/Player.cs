@@ -37,7 +37,8 @@ public class Player : MonoBehaviour
         // Whenever the player collides with something,
         // destroy the player if the collision object
         // is a tree
-        if (collision.gameObject.CompareTag("Tree"))
+        if (collision.gameObject.CompareTag("Tree")
+            || collision.gameObject.CompareTag("Boundary"))
         {
             int highscore = UpdateHighscore();
             gameController.displayedText.text = @"Your score is: " + score +

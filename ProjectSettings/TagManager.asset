@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tree
   - TreeTrigger
+  - Boundary
   layers:
   - Default
   - TransparentFX
