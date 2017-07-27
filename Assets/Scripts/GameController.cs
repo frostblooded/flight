@@ -14,14 +14,17 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public bool gameHasEnded = false;
 
-    private DateTime lastTreesCreatedAt = DateTime.Now;
+    private DateTime? lastTreesCreatedAt;
     private Transform treeHolder;
 
     void CreateTree()
     {
         // If enought seconds have passed since the last tree was created,
-        // create a new tree now
-        if(lastTreesCreatedAt.AddSeconds(SecondsBetweenTrees) < DateTime.Now)
+        // create a new tree now.
+        // The variable starts as null, so that it can be detected to start
+        // creating trees immediately when the game starts.
+        if(lastTreesCreatedAt == null
+            || lastTreesCreatedAt.Value.AddSeconds(SecondsBetweenTrees) < DateTime.Now)
         {
             Vector3 newTreePosition = new Vector2(Tree.CreationX, 0);
             Instantiate(treePrefab, newTreePosition, Quaternion.identity, treeHolder);
