@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77830e71d2774b7408dab5b06cc3e112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music: {fileID: 82941503340908268}
   jumpAudio: {fileID: 82212563602705156}
   deathAudio: {fileID: 82811859941496468}
   buttonPressAudio: {fileID: 82739070214907010}

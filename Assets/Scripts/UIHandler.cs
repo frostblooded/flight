@@ -50,6 +50,13 @@ public class UIHandler : MonoBehaviour
         endGameUI.SetActive(!endGameUI.activeSelf);
     }
 
+
+    public void MuteButtonPressed()
+    {
+        AudioListener.pause = !AudioListener.pause;
+        gameController.audioPlayer.PlayButtonPressSound();
+    }
+
     void Start () {
         gameTextUI = GameObject.Find("Game text UI");
         scoreText = GameObject.Find("Score text");

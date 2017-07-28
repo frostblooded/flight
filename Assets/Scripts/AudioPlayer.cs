@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour {
+    public AudioSource music;
     public AudioSource jumpAudio;
     public AudioSource deathAudio;
     public AudioSource buttonPressAudio;
