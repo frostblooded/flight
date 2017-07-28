@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
 
     void CreateTrees()
     {
-        Vector3 newTreePosition = new Vector2(Tree.CreationX, 0);
+        Vector3 newTreePosition = new Vector2(TreeObstacle.CreationX, 0);
         Instantiate(treePrefab, newTreePosition, Quaternion.identity, treeHolder);
     }
 

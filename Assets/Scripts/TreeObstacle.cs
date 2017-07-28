@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour
+public class TreeObstacle : MonoBehaviour
 {
     public static float CreationX = 20;
 
@@ -49,6 +49,10 @@ public class Tree : MonoBehaviour
         GameObject topComponent = Instantiate(treeComponentPrefab, this.transform);
         GameObject bottomComponent = Instantiate(treeComponentPrefab, this.transform);
         GameObject triggerComponent = Instantiate(triggerComponentPrefab, this.transform);
+
+        // Set trigger collider size equal the distance between the obstacle components
+        Vector2 triggerComponentSize = triggerComponent.GetComponent<BoxCollider2D>().size;
+        triggerComponentSize = new Vector2(triggerComponentSize.x, DistanceBetweenComponentsY);
 
         // Move the x of the components' relative position to zero, so
         // that they appear at the same x as their parent
