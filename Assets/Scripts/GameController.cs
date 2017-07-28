@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
 
     private DateTime? lastTreesCreatedAt;
     private Transform treeHolder;
+    private bool waitingToStart = true;
 
     private void CreateTree()
     {
@@ -62,6 +63,15 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        if (waitingToStart)
+        {
+            Time.timeScale = 0;
+            uiHandler.DisplayInfo("Press anywhere to start");
+        } else
+        {
+            uiHandler.gameInfoText.SetActive(false);
+        }
+
         treeHolder = new GameObject("Trees").transform;
     }
 
@@ -71,6 +81,12 @@ public class GameController : MonoBehaviour
     }
 
     void Update () {
+        if(waitingToStart && Input.anyKey)
+        {
+            Time.timeScale = 1;
+            uiHandler.gameInfoText.SetActive(false);
+        }
+
         CreateTree();
 	}
 }

@@ -8,31 +8,39 @@ public class UIHandler : MonoBehaviour
     [HideInInspector]
     public GameObject gameUI;
     [HideInInspector]
-    public Text scoreText;
+    public GameObject scoreText;
+    [HideInInspector]
+    public GameObject gameInfoText;
     [HideInInspector]
     public GameObject endGameUI;
     [HideInInspector]
-    public Text endGameText;
+    public GameObject endGameText;
 
     public void DisplayGameScore(int score)
     {
-        scoreText.text = score.ToString();
+        scoreText.GetComponent<Text>().text = score.ToString();
+    }
+
+    public void DisplayInfo(string info)
+    {
+        gameInfoText.GetComponent<Text>().text = info;
     }
 
     public void DisplayEndGameText(int score, int highscore)
     {
         gameUI.SetActive(false);
         endGameUI.SetActive(true);
-        endGameText.text = "Your score is: " + score +
+        endGameText.GetComponent<Text>().text = "Your score is: " + score +
             "\nYour highscore is: " + highscore;
     }
 
     void Start () {
         gameUI = GameObject.Find("Game UI");
-        scoreText = GameObject.Find("Score text").GetComponent<Text>();
+        scoreText = GameObject.Find("Score text");
+        gameInfoText = GameObject.Find("Game info text");
 
         endGameUI = GameObject.Find("End game UI");
-        endGameText = GameObject.Find("End game text").GetComponent<Text>();
+        endGameText = GameObject.Find("End game text");
         endGameUI.SetActive(false);
     }
 }
