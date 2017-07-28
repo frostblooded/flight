@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public float SecondsBetweenTrees = 1;
     public GameObject treePrefab;
     public UIHandler uiHandler;
+    public GameObject musicPlayerPrefab;
     
     private Transform treeHolder;
     private bool waitingToStart = true;
@@ -51,6 +52,20 @@ public class GameController : MonoBehaviour
         Destroy(player.gameObject);
     }
 
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartMusic()
+    {
+        if(GameObject.Find("Music Player") == null)
+        {
+            GameObject musicPlayer = Instantiate(musicPlayerPrefab);
+            musicPlayer.name = "Music Player";
+        }
+    }
+
     private void Start()
     {
         if (waitingToStart)
@@ -64,11 +79,7 @@ public class GameController : MonoBehaviour
 
         treeHolder = new GameObject("Trees").transform;
         InvokeRepeating("CreateTrees", 0, SecondsBetweenTrees);
-    }
-
-    public void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartMusic();
     }
 
     void Update () {
