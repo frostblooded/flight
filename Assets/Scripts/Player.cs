@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float JumpForce = 15;
     public int score = 0;
     public GameController gameController;
+    public UIHandler uiHandler;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("TreeTrigger"))
         {
             score++;
-            gameController.DisplayGameScore(score);
+            uiHandler.DisplayGameScore(score);
         }
     }
 

@@ -9,14 +9,7 @@ public class GameController : MonoBehaviour
 {
     public float SecondsBetweenTrees = 1;
     public GameObject treePrefab;
-    [HideInInspector]
-    public GameObject gameUI;
-    [HideInInspector]
-    public Text gameText;
-    [HideInInspector]
-    public GameObject endGameUI;
-    [HideInInspector]
-    public Text endGameText;
+    public UIHandler uiHandler;
     [HideInInspector]
     public bool gameHasEnded = false;
 
@@ -59,23 +52,10 @@ public class GameController : MonoBehaviour
         return currentHighscore;
     }
 
-    public void DisplayGameScore(int score)
-    {
-        gameText.text = score.ToString();
-    }
-
-    public void DisplayEndGameText(int score, int highscore)
-    {
-        gameUI.SetActive(false);
-        endGameUI.SetActive(true);
-        endGameText.text = "Your score is: " + score +
-            "\nYour highscore is: " + highscore;
-    }
-
     public void EndGame(Player player)
     {
         int highscore = UpdateHighscore(player.score);
-        DisplayEndGameText(player.score, highscore);
+        uiHandler.DisplayEndGameText(player.score, highscore);
         gameHasEnded = true;
         Destroy(player.gameObject);
     }
@@ -83,13 +63,6 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         treeHolder = new GameObject("Trees").transform;
-
-        gameUI = GameObject.Find("Game UI");
-        gameText = GameObject.Find("Game text").GetComponent<Text>();
-
-        endGameUI = GameObject.Find("End game UI");
-        endGameText = GameObject.Find("End game text").GetComponent<Text>();
-        endGameUI.SetActive(false);
     }
 
     public void RestartScene()

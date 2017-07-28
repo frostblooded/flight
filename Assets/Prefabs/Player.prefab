@@ -102,6 +102,7 @@ MonoBehaviour:
   JumpForce: 11
   score: 0
   gameController: {fileID: 0}
+  uiHandler: {fileID: 0}
 --- !u!212 &212578937390964238
 SpriteRenderer:
   m_ObjectHideFlags: 1
