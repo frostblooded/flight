@@ -27,11 +27,6 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // Sometimes the score updates at the same time (or after)
-        // the game ends, so this if prevents it
-        if (gameController.gameHasEnded)
-            return;
-
         // Whenever the player collides with the trigger between
         // the tree's components, increase the score
         if(collision.gameObject.CompareTag("TreeTrigger"))

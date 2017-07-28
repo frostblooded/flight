@@ -10,10 +10,6 @@ public class GameController : MonoBehaviour
     public float SecondsBetweenTrees = 1;
     public GameObject treePrefab;
     public UIHandler uiHandler;
-    [HideInInspector]
-    public bool gameHasEnded = false;
-
-    private const string HighscorePrefsName = "highscore";
     
     private Transform treeHolder;
     private bool waitingToStart = true;
@@ -25,28 +21,33 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates the highscore of the player if necessary
+    /// Updates the statistics of the player if necessary
     /// </summary>
     /// <returns>The high score after it has been updated</returns>
-    private int UpdateHighscore(int score)
+    private int UpdateStatistics(Player player)
     {
-        int currentHighscore = PlayerPrefs.GetInt(HighscorePrefsName, 0);
+        int currentHighscore = PlayerPrefs.GetInt(StatisticsPanel.HighscorePrefsName, 0);
+        int currentDeaths = PlayerPrefs.GetInt(StatisticsPanel.DeathsPrefsName, 0);
+        int currentTimePlayed = PlayerPrefs.GetInt(StatisticsPanel.TimePlayedPrefsName, 0);
 
-        if (score > currentHighscore)
+        PlayerPrefs.SetInt(StatisticsPanel.DeathsPrefsName, currentDeaths + 1);
+        PlayerPrefs.SetFloat(StatisticsPanel.TimePlayedPrefsName, currentTimePlayed + Time.time);
+
+        if (player.score > currentHighscore)
         {
-            PlayerPrefs.SetInt(HighscorePrefsName, score);
+            PlayerPrefs.SetInt(StatisticsPanel.HighscorePrefsName, player.score);
             PlayerPrefs.Save();
-            return score;
+            return player.score;
         }
 
+        PlayerPrefs.Save();
         return currentHighscore;
     }
 
     public void EndGame(Player player)
     {
-        int highscore = UpdateHighscore(player.score);
+        int highscore = UpdateStatistics(player);
         uiHandler.DisplayEndGameText(player.score, highscore);
-        gameHasEnded = true;
         Destroy(player.gameObject);
     }
 
@@ -75,6 +76,7 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1;
             uiHandler.gameInfoText.SetActive(false);
+            waitingToStart = false;
         }
 	}
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIHandler : MonoBehaviour
 {
     [HideInInspector]
-    public GameObject gameUI;
+    public GameObject gameTextUI;
     [HideInInspector]
     public GameObject scoreText;
     [HideInInspector]
@@ -15,6 +15,8 @@ public class UIHandler : MonoBehaviour
     public GameObject endGameUI;
     [HideInInspector]
     public GameObject endGameText;
+    [HideInInspector]
+    public GameObject statisticsPanel;
 
     public void DisplayGameScore(int score)
     {
@@ -28,19 +30,33 @@ public class UIHandler : MonoBehaviour
 
     public void DisplayEndGameText(int score, int highscore)
     {
-        gameUI.SetActive(false);
+        gameTextUI.SetActive(false);
         endGameUI.SetActive(true);
         endGameText.GetComponent<Text>().text = "Your score is: " + score +
             "\nYour highscore is: " + highscore;
     }
 
+    public void OpenStatisticsPanel()
+    {
+        // Toggle if the panel is active
+        statisticsPanel.SetActive(!statisticsPanel.activeSelf);
+        Time.timeScale = statisticsPanel.activeSelf ? 0 : 1f;
+
+        // TODO: find a better way for the panel opening to work
+        endGameUI.SetActive(!endGameUI.activeSelf);
+        endGameUI.SetActive(!endGameUI.activeSelf);
+    }
+
     void Start () {
-        gameUI = GameObject.Find("Game UI");
+        gameTextUI = GameObject.Find("Game text UI");
         scoreText = GameObject.Find("Score text");
         gameInfoText = GameObject.Find("Game info text");
 
         endGameUI = GameObject.Find("End game UI");
         endGameText = GameObject.Find("End game text");
         endGameUI.SetActive(false);
+
+        statisticsPanel = GameObject.Find("Statistics panel");
+        statisticsPanel.SetActive(false);
     }
 }
