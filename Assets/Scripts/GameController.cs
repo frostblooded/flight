@@ -14,24 +14,17 @@ public class GameController : MonoBehaviour
     public bool gameHasEnded = false;
 
     private const string HighscorePrefsName = "highscore";
-
-    private DateTime? lastTreesCreatedAt;
+    
     private Transform treeHolder;
     private bool waitingToStart = true;
 
-    private void CreateTree()
+    IEnumerable CreateTrees()
     {
-        // If enought seconds have passed since the last tree was created,
-        // create a new tree now.
-        // The variable starts as null, so that it can be detected to start
-        // creating trees immediately when the game starts.
-        if(lastTreesCreatedAt == null
-            || lastTreesCreatedAt.Value.AddSeconds(SecondsBetweenTrees) < DateTime.Now)
+        while (true)
         {
             Vector3 newTreePosition = new Vector2(Tree.CreationX, 0);
             Instantiate(treePrefab, newTreePosition, Quaternion.identity, treeHolder);
-
-            lastTreesCreatedAt = DateTime.Now;
+            yield return new WaitForSeconds(SecondsBetweenTrees);
         }
     }
 
@@ -73,6 +66,7 @@ public class GameController : MonoBehaviour
         }
 
         treeHolder = new GameObject("Trees").transform;
+        StartCoroutine("CreateTrees");
     }
 
     public void RestartScene()
@@ -86,7 +80,5 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1;
             uiHandler.gameInfoText.SetActive(false);
         }
-
-        CreateTree();
 	}
 }

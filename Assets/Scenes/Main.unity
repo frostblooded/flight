@@ -722,8 +722,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114396578768538348, guid: 76864f078ccf98f4b9e7ecfa0d8c7b33,
-          type: 2}
+      - m_Target: {fileID: 507585463}
         m_MethodName: RestartScene
         m_Mode: 1
         m_Arguments:
