@@ -32,8 +32,7 @@ public class UIHandler : MonoBehaviour
     {
         gameTextUI.SetActive(false);
         endGameUI.SetActive(true);
-        endGameText.GetComponent<Text>().text = "Your score is: " + score +
-            "\nYour highscore is: " + highscore;
+        endGameText.GetComponent<Text>().text = "Your score is: " + score;
     }
 
     public void OpenStatisticsPanel()

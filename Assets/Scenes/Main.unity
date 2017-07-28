@@ -780,9 +780,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Your score is:
-
-    Your highscore is:'
+  m_Text: 'Your score is:'
 --- !u!222 &436235155
 CanvasRenderer:
   m_ObjectHideFlags: 0
