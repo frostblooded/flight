@@ -44,10 +44,6 @@ public class UIHandler : MonoBehaviour
         // Toggle if the panel is active
         statisticsPanel.SetActive(!statisticsPanel.activeSelf);
         Time.timeScale = statisticsPanel.activeSelf ? 0 : 1f;
-
-        // TODO: find a better way for the panel opening to work
-        endGameUI.SetActive(!endGameUI.activeSelf);
-        endGameUI.SetActive(!endGameUI.activeSelf);
     }
 
 
