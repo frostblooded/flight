@@ -25,8 +25,11 @@ public class StatisticsPanel : MonoBehaviour {
         int deaths = PlayerPrefs.GetInt(DeathsPrefsName, 0);
         float highscore = PlayerPrefs.GetInt(HighscorePrefsName, 0);
 
-        // Add the time of the current playthrough to the time played
-        timePlayedValue.GetComponent<Text>().text = timePlayed.ToString();
+        int minutesPlayed = (int)(timePlayed / 60);
+        int secondsPlayed = (int)(timePlayed % 60);
+        string timePlayedString = string.Format("{0:D2}:{1:D2} minutes", minutesPlayed, secondsPlayed);
+
+        timePlayedValue.GetComponent<Text>().text = timePlayedString;
         deathsCountValue.GetComponent<Text>().text = deaths.ToString();
         highscoreValue.GetComponent<Text>().text = highscore.ToString();
     }
