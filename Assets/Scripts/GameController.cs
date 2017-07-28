@@ -18,14 +18,10 @@ public class GameController : MonoBehaviour
     private Transform treeHolder;
     private bool waitingToStart = true;
 
-    IEnumerable CreateTrees()
+    void CreateTrees()
     {
-        while (true)
-        {
-            Vector3 newTreePosition = new Vector2(Tree.CreationX, 0);
-            Instantiate(treePrefab, newTreePosition, Quaternion.identity, treeHolder);
-            yield return new WaitForSeconds(SecondsBetweenTrees);
-        }
+        Vector3 newTreePosition = new Vector2(Tree.CreationX, 0);
+        Instantiate(treePrefab, newTreePosition, Quaternion.identity, treeHolder);
     }
 
     /// <summary>
@@ -66,7 +62,7 @@ public class GameController : MonoBehaviour
         }
 
         treeHolder = new GameObject("Trees").transform;
-        StartCoroutine("CreateTrees");
+        InvokeRepeating("CreateTrees", 0, SecondsBetweenTrees);
     }
 
     public void RestartScene()
