@@ -307,6 +307,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114527467162312232, guid: c99ce5d0abd1aa44f9039f04eed66758,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 507585463}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c99ce5d0abd1aa44f9039f04eed66758, type: 2}
   m_IsPrefabParent: 0
@@ -436,7 +441,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 242473567}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -231.77214, y: 90, z: 0}
+  m_LocalPosition: {x: -232.72151, y: 90, z: 0}
   m_LocalScale: {x: 1.3333335, y: 1.3333335, z: 1.3333335}
   m_Children: []
   m_Father: {fileID: 1273837624}
@@ -515,7 +520,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 266799343}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 236.77214, y: 95, z: 0}
+  m_LocalPosition: {x: 237.72151, y: 95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 508314148}
@@ -1024,7 +1029,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 507585463}
-        m_MethodName: RestartScene
+        m_MethodName: TryAgainButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1625,7 +1630,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1556969793}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 382, y: 158, z: 0}
+  m_LocalPosition: {x: 383.5, y: 158, z: 0}
   m_LocalScale: {x: 1.58, y: 1.58, z: 1.58}
   m_Children:
   - {fileID: 1273837624}

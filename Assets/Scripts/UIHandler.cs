@@ -18,6 +18,8 @@ public class UIHandler : MonoBehaviour
     [HideInInspector]
     public GameObject statisticsPanel;
 
+    public GameController gameController;
+
     public void DisplayGameScore(int score)
     {
         scoreText.GetComponent<Text>().text = score.ToString();
@@ -37,6 +39,8 @@ public class UIHandler : MonoBehaviour
 
     public void OpenStatisticsPanel()
     {
+        gameController.audioPlayer.PlayButtonPressSound();
+
         // Toggle if the panel is active
         statisticsPanel.SetActive(!statisticsPanel.activeSelf);
         Time.timeScale = statisticsPanel.activeSelf ? 0 : 1f;

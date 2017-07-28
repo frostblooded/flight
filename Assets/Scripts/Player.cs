@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Tree")
             || collision.gameObject.CompareTag("Boundary"))
         {
+            gameController.audioPlayer.PlayDeathSound();
             gameController.EndGame(this);
         }
     }
@@ -67,6 +68,7 @@ public class Player : MonoBehaviour
             // When it is done with setting the velocity directly, 
             // it gets the same upward velocity every time.
             rb2D.velocity = Vector2.up * JumpForce;
+            gameController.audioPlayer.PlayJumpSound();
             buttonPressed = false;
         }
     }

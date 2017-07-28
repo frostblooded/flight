@@ -51,7 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36dfa87dfc485204b8638e9dd0726ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameUI: {fileID: 0}
+  gameTextUI: {fileID: 0}
   scoreText: {fileID: 0}
+  gameInfoText: {fileID: 0}
   endGameUI: {fileID: 0}
   endGameText: {fileID: 0}
+  statisticsPanel: {fileID: 0}
+  gameController: {fileID: 0}
