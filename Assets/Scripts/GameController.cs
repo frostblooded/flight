@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
         }
 
         treeHolder = new GameObject("Trees").transform;
-        InvokeRepeating("CreateTrees", 0, SecondsBetweenTrees);
+        InvokeRepeating("CreateTrees", 0, Constants.SecondsBetweenTrees);
     }
 
     void Update () {

@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722110435198728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.4133024, y: -0.45196462, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,11 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685ee21666c231244acd684c37e34b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 0.15
-  TopComponentMinY: 3
-  TopComponentMaxY: 7
-  DistanceBetweenComponentsY: 3.75
-  DestroyTreesLeftOfX: -20
   treeComponentPrefab: {fileID: 1984096058437214, guid: 139e7108a86824648babded0eab4c564,
     type: 2}
   triggerComponentPrefab: {fileID: 1096646912961854, guid: e00863d0329344c4e98964ddd27b85f6,

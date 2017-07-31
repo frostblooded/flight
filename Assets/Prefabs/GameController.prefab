@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419d51d968b9f7f428606192bf4273d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondsBetweenTrees: 1.5
   treePrefab: {fileID: 1722110435198728, guid: f23d7ac09a7455642968781fc456f8ff, type: 2}
   uiHandler: {fileID: 0}
   musicPlayerPrefab: {fileID: 1819638509038432, guid: 5eff09fae338e3a4d90c471d6423666e,
