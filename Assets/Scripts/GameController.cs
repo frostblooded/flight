@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public float SecondsBetweenTrees = 1;
     public GameObject treePrefab;
     public UIHandler uiHandler;
     public GameObject musicPlayerPrefab;
