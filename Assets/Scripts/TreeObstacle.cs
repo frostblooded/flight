@@ -4,23 +4,15 @@ using UnityEngine;
 
 public class TreeObstacle : MonoBehaviour
 {
-    public static float CreationX = 20;
-
-    public float MoveSpeed = 0.2f;
-    public float TopComponentMinY = 3.0f;
-    public float TopComponentMaxY = 7.0f;
-    public float DistanceBetweenComponentsY = 3.5f;
-    public float DestroyTreesLeftOfX = -20.0f;
-
     public GameObject treeComponentPrefab;
     public GameObject triggerComponentPrefab;
 
     public void Move()
     {
-        this.transform.position -= Vector3.right * MoveSpeed;
+        this.transform.position -= Vector3.right * Constants.TreeMoveSpeed;
 
         // Destroy component if it went off the screen
-        if (this.transform.position.x < DestroyTreesLeftOfX)
+        if (this.transform.position.x < Constants.DestroyTreesLeftOfX)
         {
             Destroy(gameObject);
         }
@@ -31,7 +23,7 @@ public class TreeObstacle : MonoBehaviour
         Bounds treeComponentBounds = treeComponentPrefab.GetComponent<Renderer>().bounds;
         Vector3 treeComponentSize = treeComponentBounds.size;
 
-        float topComponentY = Random.Range(TopComponentMinY, TopComponentMaxY);
+        float topComponentY = Random.Range(Constants.TreeTopComponentMinY, Constants.TreeTopComponentMaxY);
 
         // To get what the Y of the bottom component should be, we first substract
         // the distance that we need between the components, but we also need to substract
@@ -39,7 +31,7 @@ public class TreeObstacle : MonoBehaviour
         // of the top component is actually its center. Then we substract half of the 
         // component's height again because the case is the same when it comes to
         // the bottom component. Ultimately we just substract the component's height once.
-        float bottomComponentY = topComponentY - DistanceBetweenComponentsY - treeComponentSize.y;
+        float bottomComponentY = topComponentY - Constants.DistanceBetweenTreeComponentsY - treeComponentSize.y;
 
         // Spawn the trigger component exactly in the middle between the other two components
         // TODO: Set the height of the trigger component to be set to the constant that says
@@ -52,7 +44,7 @@ public class TreeObstacle : MonoBehaviour
 
         // Set trigger collider size equal the distance between the obstacle components
         Vector2 triggerComponentSize = triggerComponent.GetComponent<BoxCollider2D>().size;
-        triggerComponentSize = new Vector2(triggerComponentSize.x, DistanceBetweenComponentsY);
+        triggerComponentSize = new Vector2(triggerComponentSize.x, Constants.DistanceBetweenTreeComponentsY);
 
         // Move the x of the components' relative position to zero, so
         // that they appear at the same x as their parent

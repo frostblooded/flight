@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
 
     void CreateTrees()
     {
-        Vector3 newTreePosition = new Vector2(TreeObstacle.CreationX, 0);
+        Vector3 newTreePosition = new Vector2(Constants.TreeCreationX, 0);
         Instantiate(treePrefab, newTreePosition, Quaternion.identity, treeHolder);
     }
 
@@ -27,16 +27,16 @@ public class GameController : MonoBehaviour
     /// <returns>The high score after it has been updated</returns>
     private int UpdateStatistics(Player player)
     {
-        int currentHighscore = PlayerPrefs.GetInt(StatisticsPanel.HighscorePrefsName, 0);
-        int currentDeaths = PlayerPrefs.GetInt(StatisticsPanel.DeathsPrefsName, 0);
-        int currentTimePlayed = PlayerPrefs.GetInt(StatisticsPanel.TimePlayedPrefsName, 0);
+        int currentHighscore = PlayerPrefs.GetInt(Constants.HighscorePrefsName, 0);
+        int currentDeaths = PlayerPrefs.GetInt(Constants.DeathsPrefsName, 0);
+        int currentTimePlayed = PlayerPrefs.GetInt(Constants.TimePlayedPrefsName, 0);
 
-        PlayerPrefs.SetInt(StatisticsPanel.DeathsPrefsName, currentDeaths + 1);
-        PlayerPrefs.SetFloat(StatisticsPanel.TimePlayedPrefsName, currentTimePlayed + Time.time);
+        PlayerPrefs.SetInt(Constants.DeathsPrefsName, currentDeaths + 1);
+        PlayerPrefs.SetFloat(Constants.TimePlayedPrefsName, currentTimePlayed + Time.time);
 
         if (player.score > currentHighscore)
         {
-            PlayerPrefs.SetInt(StatisticsPanel.HighscorePrefsName, player.score);
+            PlayerPrefs.SetInt(Constants.HighscorePrefsName, player.score);
             PlayerPrefs.Save();
             return player.score;
         }

@@ -4,10 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class StatisticsPanel : MonoBehaviour {
-    public const string HighscorePrefsName = "highscore";
-    public const string DeathsPrefsName = "deaths";
-    public const string TimePlayedPrefsName = "timePlayed";
-
     [HideInInspector]
     public GameObject timePlayedValue;
     [HideInInspector]
@@ -21,9 +17,9 @@ public class StatisticsPanel : MonoBehaviour {
         deathsCountValue = GameObject.Find("Deaths count value");
         highscoreValue = GameObject.Find("Highscore value");
 
-        float timePlayed = PlayerPrefs.GetFloat(TimePlayedPrefsName, 0);
-        int deaths = PlayerPrefs.GetInt(DeathsPrefsName, 0);
-        float highscore = PlayerPrefs.GetInt(HighscorePrefsName, 0);
+        float timePlayed = PlayerPrefs.GetFloat(Constants.TimePlayedPrefsName, 0);
+        int deaths = PlayerPrefs.GetInt(Constants.DeathsPrefsName, 0);
+        float highscore = PlayerPrefs.GetInt(Constants.HighscorePrefsName, 0);
 
         int minutesPlayed = (int)(timePlayed / 60);
         int secondsPlayed = (int)(timePlayed % 60);

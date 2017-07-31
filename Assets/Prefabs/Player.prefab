@@ -263,8 +263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78231fff1c93254438764b0f1dcf60e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpAudio: {fileID: 82734794220347926}
-  deathAudio: {fileID: 82220035928390218}
   JumpForce: 11
   score: 0
   gameController: {fileID: 0}

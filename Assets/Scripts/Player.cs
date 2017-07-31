@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb2D;
     private bool buttonPressed = false;
 
-    public float JumpForce = 15;
     public int score = 0;
     public GameController gameController;
     public UIHandler uiHandler;
@@ -67,7 +66,7 @@ public class Player : MonoBehaviour
             // slow the falling speed if the player was falling.
             // When it is done with setting the velocity directly, 
             // it gets the same upward velocity every time.
-            rb2D.velocity = Vector2.up * JumpForce;
+            rb2D.velocity = Vector2.up * Constants.PlayerJumpForce;
             AudioManager.instance.PlayJumpSound();
             buttonPressed = false;
         }
