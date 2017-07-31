@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
     public GameObject treePrefab;
     public UIHandler uiHandler;
     public GameObject musicPlayerPrefab;
-    public AudioPlayer audioPlayer;
     
     private Transform treeHolder;
     private bool waitingToStart = true;
@@ -53,31 +52,6 @@ public class GameController : MonoBehaviour
         Destroy(player.gameObject);
     }
 
-    public void TryAgainButtonClicked()
-    {
-        audioPlayer.PlayButtonPressSound();
-        RestartScene();
-    }
-
-    public void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void StartMusic()
-    {
-        if(GameObject.Find("Audio Player") == null)
-        {
-            GameObject audioPlayerObject = Instantiate(musicPlayerPrefab);
-            audioPlayerObject.name = "Audio Player";
-            audioPlayer = audioPlayerObject.GetComponent<AudioPlayer>();
-        }
-        else
-        {
-            audioPlayer = GameObject.FindObjectOfType<AudioPlayer>();
-        }
-    }
-
     private void Start()
     {
         if (waitingToStart)
@@ -91,7 +65,6 @@ public class GameController : MonoBehaviour
 
         treeHolder = new GameObject("Trees").transform;
         InvokeRepeating("CreateTrees", 0, SecondsBetweenTrees);
-        StartMusic();
     }
 
     void Update () {

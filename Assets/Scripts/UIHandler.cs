@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIHandler : MonoBehaviour
@@ -17,8 +18,6 @@ public class UIHandler : MonoBehaviour
     public GameObject endGameText;
     [HideInInspector]
     public GameObject statisticsPanel;
-
-    public GameController gameController;
 
     public void DisplayGameScore(int score)
     {
@@ -39,18 +38,25 @@ public class UIHandler : MonoBehaviour
 
     public void OpenStatisticsPanel()
     {
-        gameController.audioPlayer.PlayButtonPressSound();
+        AudioManager.instance.PlayButtonPressSound();
 
         // Toggle if the panel is active
         statisticsPanel.SetActive(!statisticsPanel.activeSelf);
         Time.timeScale = statisticsPanel.activeSelf ? 0 : 1f;
     }
 
+    public void TryAgainButtonClicked()
+    {
+        AudioManager.instance.PlayButtonPressSound();
+
+        // Restart current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     public void MuteButtonPressed()
     {
         AudioListener.pause = !AudioListener.pause;
-        gameController.audioPlayer.PlayButtonPressSound();
+        AudioManager.instance.PlayButtonPressSound();
     }
 
     void Start () {
