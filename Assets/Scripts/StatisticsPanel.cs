@@ -7,7 +7,7 @@ public class StatisticsPanel : MonoBehaviour {
     [HideInInspector]
     public GameObject timePlayedValue;
     [HideInInspector]
-    public GameObject deathsCountValue;
+    public GameObject attemptsValue;
     [HideInInspector]
     public GameObject highscoreValue;
     [HideInInspector]
@@ -22,7 +22,7 @@ public class StatisticsPanel : MonoBehaviour {
     private void OnEnable()
     {
         timePlayedValue = transform.Find("Time played value").gameObject;
-        deathsCountValue = transform.Find("Deaths count value").gameObject;
+        attemptsValue = transform.Find("Attempts value").gameObject;
         highscoreValue = transform.Find("Highscore value").gameObject;
         totalJumpsValue = transform.Find("Total jumps value").gameObject;
 
@@ -36,7 +36,7 @@ public class StatisticsPanel : MonoBehaviour {
         string timePlayedString = string.Format("{0:D2}:{1:D2} minutes", minutesPlayed, secondsPlayed);
 
         timePlayedValue.GetComponent<Text>().text = timePlayedString;
-        deathsCountValue.GetComponent<Text>().text = deaths.ToString();
+        attemptsValue.GetComponent<Text>().text = deaths.ToString();
         highscoreValue.GetComponent<Text>().text = highscore.ToString();
         totalJumpsValue.GetComponent<Text>().text = totalJumps.ToString();
     }

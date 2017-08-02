@@ -1529,7 +1529,7 @@ GameObject:
   - component: {fileID: 1041642329}
   - component: {fileID: 1041642328}
   m_Layer: 5
-  m_Name: Deaths count label
+  m_Name: Attempts label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1587,7 +1587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Deaths count:'
+  m_Text: 'Attempts:'
 --- !u!222 &1041642329
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1790,8 +1790,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timePlayedValue: {fileID: 0}
-  deathsCountValue: {fileID: 0}
+  attemptsValue: {fileID: 0}
   highscoreValue: {fileID: 0}
+  totalJumpsValue: {fileID: 0}
 --- !u!114 &1114145739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2640,7 +2641,7 @@ GameObject:
   - component: {fileID: 1967663104}
   - component: {fileID: 1967663103}
   m_Layer: 5
-  m_Name: Deaths count value
+  m_Name: Attempts value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
