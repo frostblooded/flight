@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayJumpSound()
     {
+        jumpAudio.pitch = (Random.Range(Constants.PlayerJumpSoundMinPitch, Constants.PlayerJumpSoundMaxPitch));
         jumpAudio.Play();
     }
 

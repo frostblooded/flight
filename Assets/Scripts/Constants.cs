@@ -10,6 +10,9 @@ public static class Constants
     // for jump be handled
     public static float JumpInputBelowScreenTopY = 70;
 
+    public static float PlayerJumpSoundMinPitch = 0.8f;
+    public static float PlayerJumpSoundMaxPitch = 1.5f;
+
     public const string HighscorePrefsName = "highscore";
     public const string AttemptsPrefsName = "attempts";
     public const string TimePlayedPrefsName = "timePlayed";
