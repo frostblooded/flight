@@ -21,7 +21,7 @@ public class UIHandler : MonoBehaviour
 
     public void DisplayGameScore(int score)
     {
-        scoreText.GetComponent<Text>().text = score.ToString();
+        scoreText.GetComponent<Text>().text = "Score: " + score.ToString();
     }
 
     public void DisplayInfo(string info)
