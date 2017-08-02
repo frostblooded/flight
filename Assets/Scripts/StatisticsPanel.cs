@@ -11,11 +11,17 @@ public class StatisticsPanel : MonoBehaviour {
     [HideInInspector]
     public GameObject highscoreValue;
 
+    public void OnCloseButtonPressed()
+    {
+        AudioManager.instance.PlayButtonPressSound();
+        gameObject.SetActive(false);
+    }
+
     private void OnEnable()
     {
-        timePlayedValue = GameObject.Find("Time played value");
-        deathsCountValue = GameObject.Find("Deaths count value");
-        highscoreValue = GameObject.Find("Highscore value");
+        timePlayedValue = transform.Find("Time played value").gameObject;
+        deathsCountValue = transform.Find("Deaths count value").gameObject;
+        highscoreValue = transform.Find("Highscore value").gameObject;
 
         float timePlayed = PlayerPrefs.GetFloat(Constants.TimePlayedPrefsName, 0);
         int deaths = PlayerPrefs.GetInt(Constants.DeathsPrefsName, 0);

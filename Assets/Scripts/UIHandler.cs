@@ -7,17 +7,17 @@ using UnityEngine.UI;
 public class UIHandler : MonoBehaviour
 {
     [HideInInspector]
-    public GameObject gameTextUI;
+    public GameObject duringGameUI;
     [HideInInspector]
     public GameObject scoreText;
     [HideInInspector]
-    public GameObject gameInfoText;
+    public GameObject infoText;
     [HideInInspector]
-    public GameObject endGameUI;
+    public GameObject afterGameUI;
     [HideInInspector]
-    public GameObject endGameText;
+    public GameObject scoreResultText;
     [HideInInspector]
-    public GameObject statisticsPanel;
+    public GameObject statisticsWindow;
 
     public void DisplayGameScore(int score)
     {
@@ -26,14 +26,14 @@ public class UIHandler : MonoBehaviour
 
     public void DisplayInfo(string info)
     {
-        gameInfoText.GetComponent<Text>().text = info;
+        infoText.GetComponent<Text>().text = info;
     }
 
     public void DisplayEndGameText(int score, int highscore)
     {
-        gameTextUI.SetActive(false);
-        endGameUI.SetActive(true);
-        endGameText.GetComponent<Text>().text = "Your score is: " + score;
+        duringGameUI.SetActive(false);
+        afterGameUI.SetActive(true);
+        scoreResultText.GetComponent<Text>().text = "Your score is: " + score;
     }
 
     public void OpenStatisticsPanel()
@@ -41,8 +41,8 @@ public class UIHandler : MonoBehaviour
         AudioManager.instance.PlayButtonPressSound();
 
         // Toggle if the panel is active
-        statisticsPanel.SetActive(!statisticsPanel.activeSelf);
-        Time.timeScale = statisticsPanel.activeSelf ? 0 : 1f;
+        statisticsWindow.SetActive(!statisticsWindow.activeSelf);
+        Time.timeScale = statisticsWindow.activeSelf ? 0 : 1f;
     }
 
     public void TryAgainButtonClicked()
@@ -60,15 +60,15 @@ public class UIHandler : MonoBehaviour
     }
 
     void Start () {
-        gameTextUI = GameObject.Find("Game text UI");
+        duringGameUI = GameObject.Find("During game UI");
         scoreText = GameObject.Find("Score text");
-        gameInfoText = GameObject.Find("Game info text");
+        infoText = GameObject.Find("Info text");
 
-        endGameUI = GameObject.Find("End game UI");
-        endGameText = GameObject.Find("End game text");
-        endGameUI.SetActive(false);
+        afterGameUI = GameObject.Find("After game UI");
+        scoreResultText = GameObject.Find("Score result text");
+        afterGameUI.SetActive(false);
 
-        statisticsPanel = GameObject.Find("Statistics panel");
-        statisticsPanel.SetActive(false);
+        statisticsWindow = GameObject.Find("Statistics window");
+        statisticsWindow.SetActive(false);
     }
 }

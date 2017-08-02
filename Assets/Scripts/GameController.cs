@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
             uiHandler.DisplayInfo("Press anywhere to start");
         } else
         {
-            uiHandler.gameInfoText.SetActive(false);
+            uiHandler.infoText.SetActive(false);
         }
 
         treeHolder = new GameObject("Trees").transform;
@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         if(waitingToStart && Input.anyKey)
         {
             Time.timeScale = 1;
-            uiHandler.gameInfoText.SetActive(false);
+            uiHandler.infoText.SetActive(false);
             waitingToStart = false;
         }
 	}
