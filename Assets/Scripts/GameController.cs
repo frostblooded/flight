@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
         int currentTimePlayed = PlayerPrefs.GetInt(Constants.TimePlayedPrefsName, 0);
 
         PlayerPrefs.SetInt(Constants.DeathsPrefsName, currentDeaths + 1);
-        PlayerPrefs.SetFloat(Constants.TimePlayedPrefsName, currentTimePlayed + Time.time);
+        PlayerPrefs.SetInt(Constants.TimePlayedPrefsName, (int)(currentTimePlayed + Time.time));
 
         if (player.score > currentHighscore)
         {

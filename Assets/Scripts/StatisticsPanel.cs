@@ -23,7 +23,7 @@ public class StatisticsPanel : MonoBehaviour {
         deathsCountValue = transform.Find("Deaths count value").gameObject;
         highscoreValue = transform.Find("Highscore value").gameObject;
 
-        float timePlayed = PlayerPrefs.GetFloat(Constants.TimePlayedPrefsName, 0);
+        float timePlayed = PlayerPrefs.GetInt(Constants.TimePlayedPrefsName, 0);
         int deaths = PlayerPrefs.GetInt(Constants.DeathsPrefsName, 0);
         float highscore = PlayerPrefs.GetInt(Constants.HighscorePrefsName, 0);
 
