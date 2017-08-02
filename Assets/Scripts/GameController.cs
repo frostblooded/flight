@@ -67,7 +67,9 @@ public class GameController : MonoBehaviour
     }
 
     void Update () {
-        if(waitingToStart && Input.anyKey)
+        // Player should jump is required because we only want
+        // input below the y for jumping
+        if(waitingToStart && Player.PlayerShouldJump())
         {
             Time.timeScale = 1;
             uiHandler.infoText.SetActive(false);

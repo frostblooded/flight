@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb2D;
-    private bool buttonPressed = false;
+    private bool shouldJump = false;
 
     public int score = 0;
     public GameController gameController;
@@ -35,8 +35,15 @@ public class Player : MonoBehaviour
             uiHandler.DisplayGameScore(score);
         }
     }
+    
+    public static bool PlayerShouldJump()
+    {
+        // Use methods for mouse, but they work for touch too
+        return Input.GetMouseButtonDown(0)
+            && Input.mousePosition.y < Screen.height - Constants.JumpInputBelowScreenTopY;
+    }
 
-    void Start()
+    private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
     }
@@ -45,20 +52,17 @@ public class Player : MonoBehaviour
     {
         // Save if a key has been pressed, so that the FixedUpdate method
         // can react accordingly
-        //
-        // Note: The input can't be handled in the FixedUpdate method,
-        // because it is not always called every frame and the input
-        // action may be missed
-        if (Input.anyKeyDown)
+
+        if (PlayerShouldJump())
         {
-            buttonPressed = true;
+            shouldJump = true;
         }
     }
     
     void FixedUpdate()
     {
         // Make bird jump up if any key is pressed
-        if (buttonPressed)
+        if (shouldJump)
         {
             // Set the upward velocity, so that the player always
             // jumps up with the same speed, no matter his previous
@@ -68,7 +72,7 @@ public class Player : MonoBehaviour
             // it gets the same upward velocity every time.
             rb2D.velocity = Vector2.up * Constants.PlayerJumpForce;
             AudioManager.instance.PlayJumpSound();
-            buttonPressed = false;
+            shouldJump = false;
         }
     }
 }

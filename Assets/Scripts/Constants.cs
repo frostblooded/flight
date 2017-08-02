@@ -6,6 +6,10 @@ public static class Constants
 {
     public static float PlayerJumpForce = 11;
 
+    // How much Y below the top of the screen should input
+    // for jump be handled
+    public static float JumpInputBelowScreenTopY = 70;
+
     public const string HighscorePrefsName = "highscore";
     public const string DeathsPrefsName = "deaths";
     public const string TimePlayedPrefsName = "timePlayed";
