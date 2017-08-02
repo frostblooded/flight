@@ -10,6 +10,8 @@ public class StatisticsPanel : MonoBehaviour {
     public GameObject deathsCountValue;
     [HideInInspector]
     public GameObject highscoreValue;
+    [HideInInspector]
+    public GameObject totalJumpsValue;
 
     public void OnCloseButtonPressed()
     {
@@ -22,10 +24,12 @@ public class StatisticsPanel : MonoBehaviour {
         timePlayedValue = transform.Find("Time played value").gameObject;
         deathsCountValue = transform.Find("Deaths count value").gameObject;
         highscoreValue = transform.Find("Highscore value").gameObject;
+        totalJumpsValue = transform.Find("Total jumps value").gameObject;
 
-        float timePlayed = PlayerPrefs.GetInt(Constants.TimePlayedPrefsName, 0);
-        int deaths = PlayerPrefs.GetInt(Constants.DeathsPrefsName, 0);
-        float highscore = PlayerPrefs.GetInt(Constants.HighscorePrefsName, 0);
+        int timePlayed = PlayerPrefs.GetInt(Constants.TimePlayedPrefsName, 0);
+        int deaths = PlayerPrefs.GetInt(Constants.AttemptsPrefsName, 0);
+        int highscore = PlayerPrefs.GetInt(Constants.HighscorePrefsName, 0);
+        int totalJumps = PlayerPrefs.GetInt(Constants.TotalJumpsPrefsName, 0);
 
         int minutesPlayed = (int)(timePlayed / 60);
         int secondsPlayed = (int)(timePlayed % 60);
@@ -34,5 +38,6 @@ public class StatisticsPanel : MonoBehaviour {
         timePlayedValue.GetComponent<Text>().text = timePlayedString;
         deathsCountValue.GetComponent<Text>().text = deaths.ToString();
         highscoreValue.GetComponent<Text>().text = highscore.ToString();
+        totalJumpsValue.GetComponent<Text>().text = totalJumps.ToString();
     }
 }

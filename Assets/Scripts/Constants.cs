@@ -11,8 +11,9 @@ public static class Constants
     public static float JumpInputBelowScreenTopY = 70;
 
     public const string HighscorePrefsName = "highscore";
-    public const string DeathsPrefsName = "deaths";
+    public const string AttemptsPrefsName = "attempts";
     public const string TimePlayedPrefsName = "timePlayed";
+    public const string TotalJumpsPrefsName = "totalJumps";
 
     public static float SecondsBetweenTrees = 1.5f;
     public static float TreeCreationX = 20;

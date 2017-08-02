@@ -20,33 +20,9 @@ public class GameController : MonoBehaviour
         Instantiate(treePrefab, newTreePosition, Quaternion.identity, treeHolder);
     }
 
-    /// <summary>
-    /// Updates the statistics of the player if necessary
-    /// </summary>
-    /// <returns>The high score after it has been updated</returns>
-    private int UpdateStatistics(Player player)
-    {
-        int currentHighscore = PlayerPrefs.GetInt(Constants.HighscorePrefsName, 0);
-        int currentDeaths = PlayerPrefs.GetInt(Constants.DeathsPrefsName, 0);
-        int currentTimePlayed = PlayerPrefs.GetInt(Constants.TimePlayedPrefsName, 0);
-
-        PlayerPrefs.SetInt(Constants.DeathsPrefsName, currentDeaths + 1);
-        PlayerPrefs.SetInt(Constants.TimePlayedPrefsName, (int)(currentTimePlayed + Time.time));
-
-        if (player.score > currentHighscore)
-        {
-            PlayerPrefs.SetInt(Constants.HighscorePrefsName, player.score);
-            PlayerPrefs.Save();
-            return player.score;
-        }
-
-        PlayerPrefs.Save();
-        return currentHighscore;
-    }
-
     public void EndGame(Player player)
     {
-        int highscore = UpdateStatistics(player);
+        int highscore = PlayerPrefsManager.UpdateStatistics(player);
         uiHandler.DisplayEndGameText(player.score, highscore);
         Destroy(player.gameObject);
     }

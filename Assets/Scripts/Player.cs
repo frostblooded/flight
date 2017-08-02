@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private bool shouldJump = false;
 
     public int score = 0;
+    public int jumps = 0;
     public GameController gameController;
     public UIHandler uiHandler;
 
@@ -73,6 +74,7 @@ public class Player : MonoBehaviour
             rb2D.velocity = Vector2.up * Constants.PlayerJumpForce;
             AudioManager.instance.PlayJumpSound();
             shouldJump = false;
+            jumps++;
         }
     }
 }
