@@ -40,8 +40,13 @@ public class Player : MonoBehaviour
     
     public static bool PlayerShouldJump()
     {
+        // For debugging purposes. Use the id for mouse (-1)
+        // if there is no touch, so that it can be tested on a PC
+        int touchingId = Input.touchCount > 0 ? Input.GetTouch(0).fingerId : -1;
+
+        // Don't jump if it is clicked over a UI object
         return Input.GetMouseButtonDown(0)
-            && !EventSystem.current.IsPointerOverGameObject();
+            && !EventSystem.current.IsPointerOverGameObject(touchingId);
     }
 
     private void Start()
