@@ -6,10 +6,6 @@ public static class Constants
 {
     public static float PlayerJumpForce = 11;
 
-    // How much Y below the top of the screen should input
-    // for jump be handled
-    public static float JumpInputBelowScreenTopY = 70;
-
     public static float PlayerJumpSoundMinPitch = 0.8f;
     public static float PlayerJumpSoundMaxPitch = 1.5f;
 

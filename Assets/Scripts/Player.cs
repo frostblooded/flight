@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -39,9 +40,8 @@ public class Player : MonoBehaviour
     
     public static bool PlayerShouldJump()
     {
-        // Use methods for mouse, but they work for touch too
         return Input.GetMouseButtonDown(0)
-            && Input.mousePosition.y < Screen.height - Constants.JumpInputBelowScreenTopY;
+            && !EventSystem.current.IsPointerOverGameObject();
     }
 
     private void Start()
