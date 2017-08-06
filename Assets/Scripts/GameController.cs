@@ -27,6 +27,20 @@ public class GameController : MonoBehaviour
         Destroy(player.gameObject);
     }
 
+    private void MakeGameHarder()
+    {
+        Time.timeScale += Constants.DifficultyIncrease;
+        Console.WriteLine("Time scale set to {0}", Time.timeScale);
+    }
+
+    public void OnScoreGained(int score)
+    {
+        if(score % Constants.PointsPerDifficulty == 0)
+        {
+            MakeGameHarder();
+        }
+    }
+
     private void Start()
     {
         if (waitingToStart)

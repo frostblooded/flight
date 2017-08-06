@@ -6,6 +6,9 @@ public static class Constants
 {
     public static float PlayerJumpForce = 11;
 
+    public static int PointsPerDifficulty = 5;
+    public static float DifficultyIncrease = 0.2f;
+
     public static float PlayerJumpSoundMinPitch = 0.8f;
     public static float PlayerJumpSoundMaxPitch = 1.5f;
 

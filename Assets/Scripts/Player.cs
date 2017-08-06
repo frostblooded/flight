@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb2D;
     private bool shouldJump = false;
 
-    public int score = 0;
+    public int score = 9;
     public int jumps = 0;
     public GameController gameController;
     public UIHandler uiHandler;
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
         {
             score++;
             uiHandler.DisplayGameScore(score);
+            gameController.OnScoreGained(score);
         }
     }
     

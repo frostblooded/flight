@@ -26,7 +26,19 @@ public class UIHandler : MonoBehaviour
 
     public void DisplayInfo(string info)
     {
+        infoText.SetActive(true);
         infoText.GetComponent<Text>().text = info;
+    }
+
+    private void HideInfo()
+    {
+        infoText.SetActive(false);
+    }
+
+    public void DisplayQuickInfo(string info, int seconds = 3)
+    {
+        DisplayInfo(info);
+        Invoke("HideInfo", seconds);
     }
 
     public void DisplayEndGameText(int score, int highscore)
